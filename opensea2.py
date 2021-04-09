@@ -14,6 +14,7 @@ KEYS = [
     "asset_contract address"
 ]
 
+
 n = 0
 land_assets = []
 try:
