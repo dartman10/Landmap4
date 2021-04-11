@@ -25,7 +25,7 @@
 
 <script>
 
-	var map = L.map('map', {
+	var map = L.map('map', {   //what is "L"?  where does that come from? is that a Leaflet object?
 		crs: L.CRS.Simple,
 		minZoom: -3
 	});
@@ -42,7 +42,7 @@
 	var bounds = [xy(0, 0), xy(1023, 1021.5)];
   var image = L.imageOverlay('sandbox_map.png', bounds).addTo(map);
   
-  var centerY = 430.457 // 98.185;  //longitude (y) of center of universe
+  var centerY = 500.457 // 98.185;  //longitude (y) of center of universe
   var centerX = 544.455 // 98.585;  //latitude (x) of center of universe
 
   var yHeight = 2.256;  //height of box
@@ -55,67 +55,18 @@
             [101.5, 99.9],
   ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
  
-  var polygon2 = L.polygon([
-            [99.5, 120.2],   // longitude, latitude
-            [99.5, 122.2],
-            [101.5, 122.2],
-            [101.5, 120.2],
-  ], {color: 'blue', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
- 
-  var polygon3 = L.polygon([
-            [99.5, 102.15],   // longitude, latitude
-            [99.5, 104.15],
-            [101.5, 104.15],
-            [101.5, 102.15],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+  //center of metaverse
+  L.polygon([[centerY, centerX],   // longitude, latitude
+             [centerY, centerX],
+             [centerY, centerX],
+             [centerY, centerX]
+            ], {color: 'red', fillColor: '#f03',fillOpacity: 1}
+           ).addTo(map);
 
-  var polygon4 = L.polygon([
-            [97.25, 99.9],   // longitude, latitude
-            [97.25, 101.9],
-            [99.25, 101.9],
-            [99.25, 99.9],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-
-  var polygon5 = L.polygon([
-            [97.25, 102.15],   // longitude, latitude
-            [97.25, 104.15],
-            [99.25, 104.15],
-            [99.25, 102.15],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-
-  var center = L.polygon([
-            [centerY, centerX],   // longitude, latitude
-            [centerY, centerX],
-            [centerY, centerX],
-            [centerY, centerX],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-  
-  var centerNeigbhor1 = L.polygon([
-            [centerY + (yHeight * -1) - (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],   // longitude, latitude
-            [centerY + (yHeight * -1) + (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],
-            [centerY + (yHeight * -1) + (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
-            [centerY + (yHeight * -1) - (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-  
-  //Next step, create a box by calculating from a center point
-  var box_000001 = L.polygon([
-            [centerY + (yHeight * -5), centerX + (xLength * 1) ],   // longitude, latitude
-            [centerY + (yHeight * -4), centerX + (xLength * 1)],
-            [centerY + (yHeight * -4), centerX + (xLength * 2)],
-            [centerY + (yHeight * -5), centerX + (xLength * 2)],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);    
-  
   var positionY = -1;
   var positionX = +1;
 
-  //var box_000002 = L.polygon([
-  //         [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],   // longitude, latitude
-  //          [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],
-  //          [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
-  //          [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)]
-  //], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-
-  map.setView(xy(120, 70), 0.5);  // this is the initial coordinates view of the map
+  map.setView(yx(centerY, centerX), 0.8);  // this is the initial coordinates view of the map
 
   function drawBox(positionY, positionX) {
     L.polygon([
@@ -127,47 +78,48 @@
 
   }
 
-  drawBox(-3,+1);
-  drawBox(-5,+3);
-  drawBox(-7,+5);
-  drawBox(-9,+7);
-  drawBox(-11,+9);
+  //go left
+  drawBox(0,-25);
+  drawBox(0,-50);
+  drawBox(0,-75);
+  drawBox(0,-100);
+  drawBox(0,-125);
+  drawBox(0,-150);
+  drawBox(0,-175);
 
-  drawBox(+13,+30);
-  drawBox(+5,+33);
-  drawBox(+7,+35);
-  drawBox(+9,+37);
-  drawBox(+11,+39);
+  //go right
+  drawBox(0,25);
+  drawBox(0,50);
+  drawBox(0,75);
+  drawBox(0,100);
+  drawBox(0,125);
+  drawBox(0,150);
+  drawBox(0,175);
 
-  drawBox(+23,+40);
-  drawBox(+25,+43);
-  drawBox(+27,+45);
-  drawBox(+29,+47);
-  drawBox(+31,+49);
+  //go up
+  drawBox(25,0);
+  drawBox(50,0);
+  drawBox(75,0);
+  drawBox(100,0);
+  drawBox(125,0);
+  drawBox(150,0);
+  drawBox(175,0);
+  drawBox(200,0);
 
-  drawBox(+53,50);
-  drawBox(+55,+53);
-  drawBox(+57,+55);
-  drawBox(+59,+57);
-  drawBox(+51,+59);
-
-
-  drawBox(+253,250);
-  drawBox(+255,+253);
-  drawBox(+257,+255);
-  drawBox(+259,+257);
-  drawBox(+251,+259);
-
-  drawBox(+353,350);
-  drawBox(+355,+353);
-  drawBox(+357,+355);
-  drawBox(+359,+357);
-  drawBox(+351,+359);
-
-  drawBox(+150,+200);
+  //go down
+  drawBox(-25,0);
+  drawBox(-50,0);
+  drawBox(-75,0);
+  drawBox(-100,0);
+  drawBox(-125,0);
+  drawBox(-150,0);
+  drawBox(-175,0);
+  drawBox(-200,0);
 
   // event 
   var popup_01 = L.popup();
+
+  //function for click event; calls popup
   function onMapClick(e) {
         popup_01
             .setLatLng(e.latlng)
@@ -176,9 +128,7 @@
             .openOn(map);
   }
 
-  polygon1.on('click', onMapClick);
-  polygon2.on('click', onMapClick);
-  polygon3.on('click', onMapClick);
+  polygon1.on('click', onMapClick);  //click event calls onMapClick functionS
 
 </script>
 
