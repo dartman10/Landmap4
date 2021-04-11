@@ -42,11 +42,11 @@
 	var bounds = [xy(0, 0), xy(1023, 1021.5)];
   var image = L.imageOverlay('sandbox_map.png', bounds).addTo(map);
   
-  var centerY = 98.375;  //longitude (y) of center of universe
-  var centerX = 98.775;  //latitude (x) of center of universe
+  var centerY = 98.175;  //longitude (y) of center of universe
+  var centerX = 98.575;  //latitude (x) of center of universe
 
-  var yHeight = 2.25;  //height of box
-  var xLength = 2.55;  //width of box
+  var yHeight = 2.15;  //height of box
+  var xLength = 2.35;  //width of box
 
   var polygon1 = L.polygon([
             [99.5, 99.9],   // longitude (y), latitude (x)
@@ -91,12 +91,30 @@
   ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
   
   var centerNeigbhor1 = L.polygon([
-            [centerY - yHeight, centerX],   // longitude, latitude
-            [centerY - yHeight, centerX],
-            [centerY - yHeight, centerX],
-            [centerY - yHeight, centerX],
+            [centerY + (yHeight * -1) - (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],   // longitude, latitude
+            [centerY + (yHeight * -1) + (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],
+            [centerY + (yHeight * -1) + (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
+            [centerY + (yHeight * -1) - (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
   ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
   
+  //Next step, create a box by calculating from a center point
+  var box_000001 = L.polygon([
+            [centerY + (yHeight * -5), centerX + (xLength * 1) ],   // longitude, latitude
+            [centerY + (yHeight * -4), centerX + (xLength * 1)],
+            [centerY + (yHeight * -4), centerX + (xLength * 2)],
+            [centerY + (yHeight * -5), centerX + (xLength * 2)],
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);    
+  
+  var positionY = -1;
+  var positionX = +1;
+
+  var box_000002 = L.polygon([
+            [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],   // longitude, latitude
+            [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],
+            [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
+            [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+
   map.setView(xy(120, 70), 0.5);  // this is the initial coordinates view of the map
 
   // event 
