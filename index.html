@@ -45,15 +45,15 @@
   var centerY = 500.457 // 98.185;  //longitude (y) of center of universe
   var centerX = 544.455 // 98.585;  //latitude (x) of center of universe
 
-  var yHeight = 2.256;  //height of box
-  var xLength = 2.26;  //width of box
+  var yHeight = 2.258;  //height of box
+  var xLength = 2.261;  //width of box
 
   var polygon1 = L.polygon([
             [99.5, 99.9],   // longitude (y), latitude (x)
             [99.5, 101.9],
             [101.5, 101.9],
             [101.5, 99.9],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+  ], {color: 'blue', fillColor: 'blue',fillOpacity: 0.5}).addTo(map);
  
   //center of metaverse
   L.polygon([[centerY, centerX],   // longitude, latitude
@@ -104,7 +104,7 @@
   drawBox(125,0);
   drawBox(150,0);
   drawBox(175,0);
-  drawBox(200,0);
+  drawBox(185,0);
 
   //go down
   drawBox(-25,0);
@@ -114,7 +114,7 @@
   drawBox(-125,0);
   drawBox(-150,0);
   drawBox(-175,0);
-  drawBox(-200,0);
+  drawBox(-185,0);
 
   // event 
   var popup_01 = L.popup();
