@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
 	<title>LORDLANDER</title>
-
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
 	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-
 	<style>
 		html, body {
 			height: 100%;
@@ -21,8 +16,7 @@
 			width: 800px;
 			height: 600px;
 		}
-	</style>
-	
+	</style>	
 </head>
 
 <body>
@@ -46,28 +40,16 @@
 	};
 
 	var bounds = [xy(0, 0), xy(1023, 1021.5)];
-	var image = L.imageOverlay('sandbox_map.png', bounds).addTo(map);
+  var image = L.imageOverlay('sandbox_map.png', bounds).addTo(map);
+  
+  var centerY = 98.375;  //longitude (y) of center of universe
+  var centerX = 98.775;  //latitude (x) of center of universe
 
-  var keto_001 = xy(50.2, 50);
-  var keto_002 = xy(51.8, 51.6);
+  var yHeight = 2.25;  //height of box
+  var xLength = 2.55;  //width of box
 
-	var sol      = xy(200, 197);
-	var mizar    = xy(210, 207);
-	var kruegerZ = xy(210, 197);
-  var deneb    = xy(200, 207);
-    
-  //L.marker(zerozero).addTo(map).bindPopup(    'zero');
-  //L.marker(oneone).addTo(map).bindPopup(       'one');
-
-	//L.marker(     sol).addTo(map).bindPopup("<a href=https://opensea.io/assets/0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a/12299>x</a>");
-	//L.marker(   mizar).addTo(map).bindPopup(   'Dartman');
-	//L.marker(kruegerZ).addTo(map).bindPopup('     Daley');
-	//L.marker(   deneb).addTo(map).bindPopup(       'Mom');
-
-  var travel = L.polyline([sol, deneb]).addTo(map);
-    
   var polygon1 = L.polygon([
-            [99.5, 99.9],   // longitude, latitude
+            [99.5, 99.9],   // longitude (y), latitude (x)
             [99.5, 101.9],
             [101.5, 101.9],
             [101.5, 99.9],
@@ -78,7 +60,7 @@
             [99.5, 122.2],
             [101.5, 122.2],
             [101.5, 120.2],
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+  ], {color: 'blue', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
  
   var polygon3 = L.polygon([
             [99.5, 102.15],   // longitude, latitude
@@ -87,7 +69,35 @@
             [101.5, 102.15],
   ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
 
-  map.setView(xy(120, 70), 1);
+  var polygon4 = L.polygon([
+            [97.25, 99.9],   // longitude, latitude
+            [97.25, 101.9],
+            [99.25, 101.9],
+            [99.25, 99.9],
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+
+  var polygon5 = L.polygon([
+            [97.25, 102.15],   // longitude, latitude
+            [97.25, 104.15],
+            [99.25, 104.15],
+            [99.25, 102.15],
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+
+  var center = L.polygon([
+            [centerY, centerX],   // longitude, latitude
+            [centerY, centerX],
+            [centerY, centerX],
+            [centerY, centerX],
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+  
+  var centerNeigbhor1 = L.polygon([
+            [centerY - yHeight, centerX],   // longitude, latitude
+            [centerY - yHeight, centerX],
+            [centerY - yHeight, centerX],
+            [centerY - yHeight, centerX],
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+  
+  map.setView(xy(120, 70), 0.5);  // this is the initial coordinates view of the map
 
   // event 
   var popup_01 = L.popup();
@@ -99,9 +109,9 @@
             .openOn(map);
   }
 
-  //  map.on('click', onMapClick);
-
+  polygon1.on('click', onMapClick);
   polygon2.on('click', onMapClick);
+  polygon3.on('click', onMapClick);
 
 </script>
 
