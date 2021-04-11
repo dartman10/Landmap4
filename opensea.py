@@ -11,28 +11,31 @@ OUTPUT_FILE = "data/assets.json"
 # For a key inside another key, put a space between key names.
 KEYS = [
     "name",
-    "asset_contract address"
+    "permalink",
+    "asset_contract address",
+    "external_link",
+    "traits",
+    "owner address",
+    "sell_orders"
 ]
 
 n = 0
 land_assets = []
 try:
     # Reads through 50 queries at a time
-    while True:
+    #while True:                                # dartman : comment out for testing only, to limit loops
         querystring = {
             "order_direction": "desc",
             "limit": "49",
             "offset": str(n),
-            "collection": "sandbox"
+            "asset_contract_address":"0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a"  # SandBox Land
         }
 
         response = requests.request("GET", API_URL, params=querystring)
 
         # Loop through each asset (as a dict)
         for asset in json.loads(response.text)["assets"]:
-            # REGEX: LAND (xx, yy)
-            if re.search("^[LAND \(].*,.*\)$", asset["name"]):
-                land_assets.append(asset)
+            land_assets.append(asset)
 
         n += 50
 except:

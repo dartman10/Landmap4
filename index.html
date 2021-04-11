@@ -9,9 +9,8 @@
 	
 	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
 	<style>
 		html, body {
@@ -25,6 +24,7 @@
 	</style>
 	
 </head>
+
 <body>
 
 <div id='map'></div>
@@ -48,55 +48,60 @@
 	var bounds = [xy(0, 0), xy(1023, 1021.5)];
 	var image = L.imageOverlay('sandbox_map.png', bounds).addTo(map);
 
-    var zerozero = xy(50.2, 50);
-    var oneone = xy(51.8, 51.6);
+  var keto_001 = xy(50.2, 50);
+  var keto_002 = xy(51.8, 51.6);
 
 	var sol      = xy(200, 197);
 	var mizar    = xy(210, 207);
 	var kruegerZ = xy(210, 197);
-    var deneb    = xy(200, 207);
+  var deneb    = xy(200, 207);
     
-    //L.marker(zerozero).addTo(map).bindPopup(    'zero');
-    //L.marker(oneone).addTo(map).bindPopup(       'one');
+  //L.marker(zerozero).addTo(map).bindPopup(    'zero');
+  //L.marker(oneone).addTo(map).bindPopup(       'one');
 
 	//L.marker(     sol).addTo(map).bindPopup("<a href=https://opensea.io/assets/0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a/12299>x</a>");
 	//L.marker(   mizar).addTo(map).bindPopup(   'Dartman');
 	//L.marker(kruegerZ).addTo(map).bindPopup('     Daley');
 	//L.marker(   deneb).addTo(map).bindPopup(       'Mom');
 
-    var travel = L.polyline([sol, deneb]).addTo(map);
+  var travel = L.polyline([sol, deneb]).addTo(map);
     
-    var polygon1 = L.polygon([
+  var polygon1 = L.polygon([
             [99.5, 99.9],   // longitude, latitude
             [99.5, 101.9],
             [101.5, 101.9],
             [101.5, 99.9],
-    ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-
-   
-    var polygon2 = L.polygon([
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+ 
+  var polygon2 = L.polygon([
             [99.5, 120.2],   // longitude, latitude
             [99.5, 122.2],
             [101.5, 122.2],
             [101.5, 120.2],
-    ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+ 
+  var polygon3 = L.polygon([
+            [99.5, 102.15],   // longitude, latitude
+            [99.5, 104.15],
+            [101.5, 104.15],
+            [101.5, 102.15],
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
 
   map.setView(xy(120, 70), 1);
 
   // event 
-    var popup_01 = L.popup();
-    function onMapClick(e) {
+  var popup_01 = L.popup();
+  function onMapClick(e) {
         popup_01
             .setLatLng(e.latlng)
             //.setContent("You clicked the map at " + e.latlng.toString())
             .setContent("<nft-card contractAddress=0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a tokenId=114442>qqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrr</nft-card>")
             .openOn(map);
-        }
+  }
 
-//  map.on('click', onMapClick);
+  //  map.on('click', onMapClick);
 
-    polygon2.on('click', onMapClick);
+  polygon2.on('click', onMapClick);
 
 </script>
 
