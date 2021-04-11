@@ -117,6 +117,24 @@
 
   map.setView(xy(120, 70), 0.5);  // this is the initial coordinates view of the map
 
+  function drawBox(positionY, positionX) {
+    L.polygon([
+            [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],   // longitude, latitude
+            [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * 1) - (xLength / 2)],
+            [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)],
+            [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * 1) + (xLength / 2)]
+  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
+
+  }
+
+  drawBox(-3,+1);
+  drawBox(-5,+3);
+  drawBox(-7,+5);
+  drawBox(-9,+7);
+  drawBox(-11,+9);
+
+
+
   // event 
   var popup_01 = L.popup();
   function onMapClick(e) {
