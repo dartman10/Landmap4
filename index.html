@@ -42,8 +42,8 @@
 	var bounds = [xy(0, 0), xy(1023, 1021.5)];
   var image = L.imageOverlay('sandbox_map.png', bounds).addTo(map);
   
-  var centerY = 500.457 // 98.185;  //longitude (y) of center of universe
-  var centerX = 544.455 // 98.585;  //latitude (x) of center of universe
+  var centerY = 504.973 //500.457 // 98.185;  //longitude (y) of center of universe
+  var centerX = 546.716 //544.455 // 98.585;  //latitude (x) of center of universe
 
   var yHeight = 2.258;  //height of box
   var xLength = 2.261;  //width of box
@@ -74,8 +74,7 @@
             [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * positionX) - (xLength / 2)],
             [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * positionX) + (xLength / 2)],
             [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * positionX) + (xLength / 2)]
-  ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
-
+    ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map);
   }
 
   //go left
@@ -115,6 +114,9 @@
   drawBox(-150,0);
   drawBox(-175,0);
   drawBox(-185,0);
+
+  //find SB(15,-3)
+  drawBox(2,1);
 
   // event 
   var popup_01 = L.popup();
