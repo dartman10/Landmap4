@@ -54,7 +54,7 @@
             [99.5, 101.9],
             [101.5, 101.9],
             [101.5, 99.9],
-  ], {color: 'blue', fillColor: 'blue',fillOpacity: 0.5}).addTo(map);
+  ], {color: 'red', fillColor: 'blue',fillOpacity: 0.5}).addTo(map);
  
   //center of metaverse
   L.polygon([[centerY, centerX],   // longitude, latitude
@@ -68,6 +68,19 @@
   var positionX = +1;
 
   map.setView(yx(centerY, centerX), 0.8);  // this is the initial coordinates view of the map
+
+  // event 
+  var popup_01 = L.popup();
+
+  //function for click event; calls popup
+  function onMapClick(e) {
+        popup_01
+            .setLatLng(e.latlng)
+            //.setContent("You clicked the map at " + e.latlng.toString())
+            .setContent(sandboxLink)
+            //.setContent("<nft-card contractAddress=0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a tokenId=114442>qqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrr</nft-card>")
+            .openOn(map);
+  }
 
   function drawBox(positionY, positionX) {
     L.polygon([
@@ -119,23 +132,25 @@
   //find SB(15,-3)
   drawBox(2,1);
 
-  //find SB(15,-3)
-  drawBox(-147,-178);  //remember (y,x)
-
-
-  // event 
-  var popup_01 = L.popup();
-
-  //function for click event; calls popup
-  function onMapClick(e) {
-        popup_01
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            //.setContent("<nft-card contractAddress=0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a tokenId=114442>qqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrr</nft-card>")
-            .openOn(map);
-  }
 
   polygon1.on('click', onMapClick);  //click event calls onMapClick functionS
+  
+  function drawBox2(positionY, positionX) {
+    L.polygon([
+            [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * positionX) - (xLength / 2)],   // longitude, latitude
+            [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * positionX) - (xLength / 2)],
+            [centerY + (yHeight * positionY) + (yHeight / 2 ), centerX + (xLength * positionX) + (xLength / 2)],
+            [centerY + (yHeight * positionY) - (yHeight / 2 ), centerX + (xLength * positionX) + (xLength / 2)]
+    ], {color: 'red', fillColor: '#f03',fillOpacity: 0.5}).addTo(map).on('click',onMapClick);
+  }
+
+  //find SB(15,-3)
+  var sandboxLink;
+  sandboxLink = '<nft-card contractAddress=0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a tokenId=114442>qqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrr</nft-card>'
+            
+  drawBox2(-147,-178);  //remember (y,x)
+  //polygon2.on('click', onMapClick);
+
 
 </script>
 
