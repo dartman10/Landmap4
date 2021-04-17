@@ -48,13 +48,6 @@
 
   var yHeight = 2.258;  //height of box
   var xLength = 2.261;  //width of box
-
-  var polygon1 = L.polygon([
-            [99.5, 99.9],   // longitude (y), latitude (x)
-            [99.5, 101.9],
-            [101.5, 101.9],
-            [101.5, 99.9],
-  ], {color: 'red', fillColor: 'blue',fillOpacity: 0.5}).addTo(map);
  
   //center of metaverse
   L.polygon([[centerY, centerX],   // longitude, latitude
@@ -64,8 +57,8 @@
             ], {color: 'red', fillColor: '#f03',fillOpacity: 1}
            ).addTo(map);
 
-  var positionY = -1;
-  var positionX = +1;
+  var positionY;  // Y coordinate mapping of Sandbox Y to LandMap Y 
+  var positionX;  // X coordinate mapping of Sandbox X to LandMap X
 
   map.setView(yx(centerY, centerX), 0.8);  // this is the initial coordinates view of the map
 
