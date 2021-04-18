@@ -72,21 +72,27 @@ with open(OUTPUT_FILE, "w") as json_file:
 df_01 = pd.read_json(OUTPUT_FILE)
 
 print('=======================')
-print(df_01.size)
+print('SIZE = ', df_01.size)
 print('=======================')
-print(df_01.head())
+print('HEAD = ', df_01.head())
 print('=======================')
-print(df_01.traits)
+print('TRAITS = ', df_01.traits)
 print('=======================')
 #df_02 = df_01.traits
 #print(df_02)
-print('=======================')
+#print('=======================')
 #print(df_02.size)
-print('=======================')
+#print('=======================')
 #print(df_02.)
-print('=======================')
+#print('=======================')
 
-print(df_01.loc[:, 'traits'])
+df_01 = df_01.loc[:, 'traits']
+print('df_01[0] = ', df_01[0])
+
+df_02 = pd.DataFrame(df_01[0])
+
+print('----------------------------------')
+print('df_02 = ', df_02)
 
 
 # Generate this javascript line:
