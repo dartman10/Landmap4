@@ -90,9 +90,21 @@ df_01 = df_01.loc[:, 'traits']
 print('df_01[0] = ', df_01[0])
 
 df_02 = pd.DataFrame(df_01[0])
-
 print('----------------------------------')
-print('df_02 = ', df_02)
+df_02.set_index('trait_type', inplace=True)  # set index to column trait_type
+print('----------------------------------')
+print('df_02 follows')
+print(df_02)
+print('----------------------------------')
+y = (df_02.loc[['y'],['value']])
+yy = y.values[0]
+yy = y.values[0]
+print('y = ', yy[0])
+print('----------------------------------')
+x = (df_02.loc[['x'],['value']])
+xx = x.values[0]
+yxx = x.values[0]
+print('x = ', xx[0])
 
 
 # Generate this javascript line:
