@@ -30,7 +30,7 @@ try:
             "order_direction": "desc",
             "limit": "49",
             "offset": str(n),
-            "token_ids": "22073",   # temporary, for single land testing
+            #"token_ids": "22073",   # temporary, for single land testing
             "asset_contract_address":"0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a"  # SandBox Land
         }
 
