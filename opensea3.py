@@ -29,7 +29,7 @@ try:
             "order_direction": "desc",
             "limit": "49",
             "offset": str(n),
-            "token_ids": "22073",
+            "token_ids": "22073",   # temporary, for single land testing
             "asset_contract_address":"0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a"  # SandBox Land
         }
 
@@ -78,13 +78,6 @@ print('HEAD = ', df_01.head())
 print('=======================')
 print('TRAITS = ', df_01.traits)
 print('=======================')
-#df_02 = df_01.traits
-#print(df_02)
-#print('=======================')
-#print(df_02.size)
-#print('=======================')
-#print(df_02.)
-#print('=======================')
 
 df_01 = df_01.loc[:, 'traits']
 print('df_01[0] = ', df_01[0])
