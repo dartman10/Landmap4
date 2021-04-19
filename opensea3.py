@@ -104,14 +104,17 @@ x = (df_02.loc[['x'],['value']])
 xx = x.values[0]
 print('x = ', xx[0])
 
+#var sandboxLink; sandboxLink = '<nft-card contractAddress="0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a" tokenId="22073"></nft-card>'; drawBox(-147,-178);  //remember (y,x) --> this is mapped to SandBox lot x = -163, y = -150
+
 xxx = xx - 15
 yyy = yy + 3
 print('Sandbox coordinate = ', '(', yyy[0], ',', xxx[0], ')')
-#aContractAddress = where do i get this value?
-aString_01 = 'var sandboxLink; sandboxLink = \'<nft-card contractAddress="0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a" tokenId="' 
+aContractAddress = '0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a'
+aString_01 = 'sandboxLink = \'<nft-card contractAddress="'
+aString_015 = '" tokenId="' 
 aString_02 = '"></nft-card>\';' 
-aString_03 = 'drawbox('
-aString_final = aString_01 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'  
+aString_03 = ' drawBox('
+aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'  
 print(aString_final)
  
 # Remember (y,x) --> this is mapped to SandBox lot x = -163, y = -150
