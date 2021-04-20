@@ -25,7 +25,7 @@ n = 0
 land_assets = []
 try:
     # Reads through 50 queries at a time
-    #while True:                                # dartman : comment out for testing only, to limit loops
+    while True:                                # dartman : comment out for testing only, to limit loops
         querystring = {
             "order_direction": "desc",
             "limit": "49",
@@ -127,7 +127,7 @@ try:
     # Reads through 50 queries at a time
     while True:
         aTokenId = str(df_01.token_id[n2])
-        print('n2', n2, ' = ', aTokenId)
+        #print('n2', n2, ' = ', aTokenId)
 
         df_02 = pd.DataFrame(df_01x[n2])
         df_02.set_index('trait_type', inplace=True)  # set index to column trait_type
@@ -135,14 +135,14 @@ try:
         y = (df_02.loc[['y'],['value']])
         yy = y.values[0]
         yy = y.values[0]
-        print('y = ', yy[0])
+        #print('y = ', yy[0])
         x = (df_02.loc[['x'],['value']])
         xx = x.values[0]
-        print('x = ', xx[0])
+        #print('x = ', xx[0])
 
         xxx = xx - 15
         yyy = yy + 3
-        print('Sandbox coordinate = ', '(', yyy[0], ',', xxx[0], ')')
+        #print('Sandbox coordinate = ', '(', yyy[0], ',', xxx[0], ')')
 
         aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'  
         print(aString_final)
