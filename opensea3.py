@@ -75,7 +75,8 @@ df_01 = pd.read_json(OUTPUT_FILE)
 print('=======================')
 print('SIZE = ', df_01.size)
 print('=======================')
-print('HEAD = ', df_01.head())
+print('HEAD')
+print(df_01.head())
 print('=======================')
 print('TOKEN ID = ', df_01.token_id[0])
 aTokenId = str(df_01.token_id[0])
@@ -85,10 +86,10 @@ print('=======================')
 print('TRAITS = ', df_01.traits)
 print('=======================')
 
-df_01 = df_01.loc[:, 'traits']
-print('df_01[0] = ', df_01[0])
+df_01x = df_01.loc[:, 'traits']
+print('df_01x[0] = ', df_01x[0])
 
-df_02 = pd.DataFrame(df_01[0])
+df_02 = pd.DataFrame(df_01x[0])
 print('----------------------------------')
 df_02.set_index('trait_type', inplace=True)  # set index to column trait_type
 print('----------------------------------')
@@ -117,6 +118,40 @@ aString_03 = ' drawBox('
 aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'  
 print(aString_final)
  
+# Loop through the JSON/DataFrame data:
+
+n2 = 0
+#aTokenId = str(df_01.token_id[n2])
+#print(n2, ' = ', aTokenId)
+try:
+    # Reads through 50 queries at a time
+    while True:
+        aTokenId = str(df_01.token_id[n2])
+        print('n2', n2, ' = ', aTokenId)
+
+        df_02 = pd.DataFrame(df_01x[n2])
+        df_02.set_index('trait_type', inplace=True)  # set index to column trait_type
+
+        y = (df_02.loc[['y'],['value']])
+        yy = y.values[0]
+        yy = y.values[0]
+        print('y = ', yy[0])
+        x = (df_02.loc[['x'],['value']])
+        xx = x.values[0]
+        print('x = ', xx[0])
+
+        xxx = xx - 15
+        yyy = yy + 3
+        print('Sandbox coordinate = ', '(', yyy[0], ',', xxx[0], ')')
+
+        aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'  
+        print(aString_final)
+
+        n2 += 1
+except:
+    #pass
+    print('except at n2 =',n2)
+
 # Remember (y,x) --> this is mapped to SandBox lot x = -163, y = -150
 
 # Generate this javascript line:
