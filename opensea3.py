@@ -42,6 +42,7 @@ try:
 
         n += 50
 except:
+    print("what")
     pass
 
 # This will be filled with asset information that matches with the keys
