@@ -38,6 +38,11 @@ try:
 
         # Loop through each asset (as a dict)
         for asset in json.loads(response.text)["assets"]:
+            if not asset["sell_orders"] is None:
+                # This if statement will be true if sell_orders has a
+                # json array
+                pass
+                
             land_assets.append(asset)
 
         n += 50
@@ -116,12 +121,12 @@ yyy = yy + 3
 print('Sandbox coordinate = ', '(', yyy[0], ',', xxx[0], ')')
 aContractAddress = '0x50f5474724e0ee42d9a4e711ccfb275809fd6d4a'
 aString_01 = 'sandboxLink = \'<nft-card contractAddress="'
-aString_015 = '" tokenId="' 
-aString_02 = '"></nft-card>\';' 
+aString_015 = '" tokenId="'
+aString_02 = '"></nft-card>\';'
 aString_03 = ' drawBox('
-aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'  
+aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'
 print(aString_final)
- 
+
 # Loop through the JSON/DataFrame data:
 
 n2 = 0
@@ -148,7 +153,7 @@ try:
         yyy = yy + 3
         #print('Sandbox coordinate = ', '(', yyy[0], ',', xxx[0], ')')
 
-        aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'  
+        aString_final = aString_01 + aContractAddress + aString_015 + aTokenId + aString_02 + aString_03 + str(yyy[0]) + ',' + str(xxx[0]) + ');'
         print(aString_final)
 
         n2 += 1
