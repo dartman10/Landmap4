@@ -41,9 +41,8 @@ try:
             if not asset["sell_orders"] is None:
                 # This if statement will be true if sell_orders has a
                 # json array
-                pass
-                
-            land_assets.append(asset)
+                #pass
+                land_assets.append(asset)
 
         n += 50
 except:
