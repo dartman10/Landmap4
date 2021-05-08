@@ -157,7 +157,7 @@ try:
 
         n2 += 1
 except:
-    #pass
+    #pass 
     print('except at n2 =',n2)
 
 # Remember (y,x) --> this is mapped to SandBox lot x = -163, y = -150
